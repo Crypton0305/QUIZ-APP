@@ -180,16 +180,16 @@ input{
   width: 100%;
   height: 60px;
   border: none;
-    font-size: 17px;
-    color: #fff;
-    border-radius: 7px;
-    letter-spacing: 4px;
-    font-weight: 700;
-    text-transform: uppercase;
-    transition: 0.5s;
-    transition-property: box-shadow;
-    background: rgb(0,140,255);
-    box-shadow: 0 0 25px rgb(91, 90, 89);
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+  background: rgb(0,140,255);
+  box-shadow: 0 0 25px rgb(91, 90, 89);
 }
 .btn:hover {
   box-shadow: 0 0 5px rgb(20, 21, 21),

@@ -7,6 +7,17 @@ const progress = (value) => {
   progressText.innerHTML = `${value}`;
 };
 
+const loadingAnimation = () => {
+  startBtn.innerHTML = "Loading";
+  const loadingInterval = setInterval(() => {
+    if (startBtn.innerHTML.length === 10) {
+      startBtn.innerHTML = "Loading";
+    } else {
+      startBtn.innerHTML += ".";
+    }
+  }, 500);
+};
+
 const startBtn = document.querySelector(".start"),
   timePerQuestion = document.querySelector("#time"),
   quiz = document.querySelector(".quiz"),
@@ -44,7 +55,6 @@ const startBtn = document.querySelector(".start"),
     { question: "What is the result of '10' - 5 in JavaScript?", correct_answer: "5", incorrect_answers: ["'10'", "'15'", "NaN"] },
     { question: "Which method is used to get the last element of an array in JavaScript?", correct_answer: "pop()", incorrect_answers: ["shift()", "slice()", "peek()"] },
   ];
-  
   
   
   // Function to get a random number between 2 and 4 for the number of options
@@ -129,8 +139,12 @@ let time = 30,
     
     if (rollno === '') {
       alert('Please enter your Roll number.');
-      return;  
+      return;
+    } else if (rollno.length !== 4 || isNaN(rollno)) {
+      alert('Please enter a valid 4-digit Roll number.');
+      return;
     }
+    
   
     
     if (email === '') {
@@ -139,11 +153,11 @@ let time = 30,
     }
     
    
-    if (!email.includes('.com')) {
-      alert('Please enter a valid email address (must include ".com").');
-      return;  
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+      alert('Please enter a valid email address.');
+      return;
     }
-  
+    
     
     loadingAnimation();
   
@@ -204,6 +218,11 @@ const showQuestion = (question) => {
   startTimer(time);
 };
 
+const playAdudio = (src) => {
+  const audio = new Audio(src);
+  audio.play();
+};
+
 const startTimer = (time) => {
   timer = setInterval(() => {
     if (time === 3) {
@@ -218,16 +237,6 @@ const startTimer = (time) => {
   }, 1000);
 };
 
-const loadingAnimation = () => {
-  startBtn.innerHTML = "Loading";
-  const loadingInterval = setInterval(() => {
-    if (startBtn.innerHTML.length === 10) {
-      startBtn.innerHTML = "Loading";
-    } else {
-      startBtn.innerHTML += ".";
-    }
-  }, 500);
-};
 function defineProperty() {
   var nextBtn = document.createElement("div");
   nextBtn.style.position = "absolute";
@@ -357,7 +366,3 @@ restartBtn.addEventListener("click", () => {
   window.location.reload();
 });
 
-const playAdudio = (src) => {
-  const audio = new Audio(src);
-  audio.play();
-};
