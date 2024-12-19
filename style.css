@@ -189,13 +189,13 @@ input{
     transition: 0.5s;
     transition-property: box-shadow;
     background: rgb(0,140,255);
-    box-shadow: 0 0 25px rgb(0,140,255);
+    box-shadow: 0 0 25px rgb(91, 90, 89);
 }
 .btn:hover {
-  box-shadow: 0 0 5px rgb(0,140,255),
-  0 0 15px rgb(0,140,255),
-  0 0 20px rgb(0,140,255),
-  0 0 60px rgb(0,140,255);}
+  box-shadow: 0 0 5px rgb(20, 21, 21),
+  0 0 15px rgb(117, 118, 120),
+  0 0 20px rgb(100, 102, 103),
+  0 0 60px rgb(88, 88, 89);}
 .btn:disabled {
   background: rgb(0,140,255);
   cursor: not-allowed;
