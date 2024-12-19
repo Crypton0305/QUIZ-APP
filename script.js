@@ -9,7 +9,7 @@ const progress = (value) => {
 
 const loadingAnimation = () => {
   startBtn.innerHTML = "Loading";
-  const loadingInterval = setInterval(() => {
+  setInterval(() => {
     if (startBtn.innerHTML.length === 10) {
       startBtn.innerHTML = "Loading";
     } else {
@@ -17,6 +17,7 @@ const loadingAnimation = () => {
     }
   }, 500);
 };
+
 
 const startBtn = document.querySelector(".start"),
   timePerQuestion = document.querySelector("#time"),
@@ -288,7 +289,7 @@ const checkAnswer = () => {
       selectedAnswer.classList.add("correct");
     } else {
       selectedAnswer.classList.add("wrong");
-      const correctAnswer = document
+      document
         .querySelectorAll(".answer")
         .forEach((answer) => {
           if (
@@ -300,7 +301,7 @@ const checkAnswer = () => {
         });
     }
   } else {
-    const correctAnswer = document
+    document
       .querySelectorAll(".answer")
       .forEach((answer) => {
         if (
@@ -311,6 +312,7 @@ const checkAnswer = () => {
         }
       });
   }
+
   const answersDiv = document.querySelectorAll(".answer");
   answersDiv.forEach((answer) => {
     answer.classList.add("checked");
@@ -328,6 +330,7 @@ const nextQuestion = () => {
     showScore();
   }
 };
+
 
 const endScreen = document.querySelector(".end-screen"),
   finalScore = document.querySelector(".final-score"),
