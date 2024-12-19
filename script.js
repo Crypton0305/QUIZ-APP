@@ -248,9 +248,20 @@ defineProperty();
 
 const submitBtn = document.querySelector(".submit"),
   nextBtn = document.querySelector(".next");
+
 submitBtn.addEventListener("click", () => {
-  checkAnswer();
+  const selectedAnswer = document.querySelector(".answer.selected");
+
+  // Agar koi answer select nahi kiya gaya
+  if (!selectedAnswer) {
+    // Alert dikhana agar answer select nahi kiya
+    alert('Please select an answer before submitting!');
+    return;  // Answer select na hone par submit nahi hoga
+  }
+
+  checkAnswer();  // Agar answer select kiya gaya ho to checkAnswer call hoga
 });
+
 
 nextBtn.addEventListener("click", () => {
   nextQuestion();
