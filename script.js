@@ -207,7 +207,7 @@ const showQuestion = (question) => {
 const startTimer = (time) => {
   timer = setInterval(() => {
     if (time === 3) {
-      playAdudio("countdown.mp3");
+      playAdudio("./Assets/countdown.mp3");
     }
     if (time >= 0) {
       progress(time);
