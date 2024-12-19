@@ -30,7 +30,7 @@ body {
   overflow: hidden;
   animation: fadeIn 1s ease-in-out;
   border-radius: 10px;
-  background-color: rgba(46, 44, 44, 0.3);
+  background-color: rgba(35, 35, 35, 0.7);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -217,6 +217,14 @@ input{
   font-weight: 500;
   margin-bottom: 120px;
 }
+/* 
+.answer.correct {
+  background-color: #32cd32;
+}
+
+.answer.wrong {
+  background-color: #ff6347;
+} */
 
 
 @media (max-width: 468px) {

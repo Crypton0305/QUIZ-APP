@@ -7,22 +7,27 @@ const progress = (value) => {
   progressText.innerHTML = `${value}`;
 };
 
-const loadingAnimation = () => {
-  startBtn.innerHTML = "Loading";
-  setInterval(() => {
-    if (startBtn.innerHTML.length === 10) {
-      startBtn.innerHTML = "Loading";
-    } else {
-      startBtn.innerHTML += ".";
-    }
-  }, 500);
-};
-
-
 const startBtn = document.querySelector(".start"),
-  timePerQuestion = document.querySelector("#time"),
-  quiz = document.querySelector(".quiz"),
-  startScreen = document.querySelector(".start-screen");
+timePerQuestion = document.querySelector("#time"),
+quiz = document.querySelector(".quiz"),
+startScreen = document.querySelector(".start-screen");
+
+const submitBtn = document.querySelector(".submit"),
+  nextBtn = document.querySelector(".next");
+
+  const loadingAnimation = () => {
+    startBtn.innerHTML = "Loading";
+    const interval = setInterval(() => {
+      if (startBtn.innerHTML.length === 10) {
+        startBtn.innerHTML = "Loading";
+      } else {
+        startBtn.innerHTML += ".";
+      }
+    }, 500);
+    
+    setTimeout(() => clearInterval(interval), 1000);
+  };
+  
 
   let questions = [
     { question: "How do you declare a variable in JavaScript?", correct_answer: "var", incorrect_answers: ["let", "const"] },
@@ -137,7 +142,6 @@ let time = 30,
       return; 
     }
   
-    
     if (rollno === '') {
       alert('Please enter your Roll number.');
       return;
@@ -145,30 +149,27 @@ let time = 30,
       alert('Please enter a valid 4-digit Roll number.');
       return;
     }
-    
   
-    
     if (email === '') {
       alert('Please enter your Email.');
       return; 
     }
-    
-   
+  
     if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
       alert('Please enter a valid email address.');
       return;
     }
     
-    
     loadingAnimation();
-  
+    
     setTimeout(() => {
-      startScreen.classList.add("hide");  
-      quiz.classList.remove("hide");  
+      startScreen.classList.add("hide");
+      quiz.classList.remove("hide");
       currentQuestion = 1;
-      showQuestion(questions[0]);  // Show the first question
-    }, 1000); 
+      showQuestion(questions[0]);
+    }, 1000);
   };
+  
   
 
 startBtn.addEventListener("click", startQuiz);
@@ -233,6 +234,7 @@ const startTimer = (time) => {
       progress(time);
       time--;
     } else {
+      clearInterval(timer); 
       checkAnswer();
     }
   }, 1000);
@@ -255,9 +257,6 @@ function defineProperty() {
 }
 
 defineProperty();
-
-const submitBtn = document.querySelector(".submit"),
-  nextBtn = document.querySelector(".next");
 
 submitBtn.addEventListener("click", () => {
   const selectedAnswer = document.querySelector(".answer.selected");
